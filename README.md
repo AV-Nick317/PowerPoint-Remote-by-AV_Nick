@@ -2,6 +2,10 @@
 
 # PowerPoint-Remote (a remix of a previous app)
 
+<img src="https://raw.githubusercontent.com/JensKrumsieck/PowerPoint-Remote/master/PowerPoint%20Remote/Resources/PPTRemote.png" alt="PPTRemote" width="250px"/>
+
+
+
 Notes from previous project:
 
 **A simple WPF/Web based Remote for Powerpoint.**
