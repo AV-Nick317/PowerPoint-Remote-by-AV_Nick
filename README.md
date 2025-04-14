@@ -2,7 +2,8 @@
 
 # PowerPoint-Remote (a remix of a previous app)
 
-<img src="https://raw.githubusercontent.com/JensKrumsieck/PowerPoint-Remote/master/PowerPoint%20Remote/Resources/PPTRemote.png" alt="PPTRemote" width="250px"/>
+<img src="https://github.com/FirstPet31415/PowerPoint-Remote-by-Sylvan-Finger/tree/master/PowerPoint%20Remote/Resources/PPTRemote.png" alt="PPTRemote" width="500px"/>
+
 
 
 
