@@ -7,8 +7,6 @@ Orignianal project: https://github.com/JensKrumsieck/PowerPoint-Remote
 <img src="https://github.com/FirstPet31415/PowerPoint-Remote-by-Sylvan-Finger/tree/master/PowerPoint Remote Control.jpeg.png" alt="PPTRemote" width="500px"/>
 
 
-
-
 Notes from previous project:
 
 **A simple WPF/Web based Remote for Powerpoint.**
