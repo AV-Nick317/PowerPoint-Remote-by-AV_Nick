@@ -4,7 +4,7 @@
 
 Orignianal project: https://github.com/JensKrumsieck/PowerPoint-Remote
 
-<img src="https://github.com/FirstPet31415/PowerPoint-Remote-by-Sylvan-Finger/tree/master/PowerPoint Remote Control.jpeg.png" alt="PPTRemote" width="500px"/>
+https://github.com/FirstPet31415/PowerPoint-Remote-by-Sylvan-Finger/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png 
 
 
 Notes from previous project:
