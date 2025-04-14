@@ -1,14 +1,7 @@
 ﻿img#picture {
-    width: 65%;
+    width: 63%;
     margin-right: 0px;
     float: left;
-}
-
-
-img#picture2 {
-    width: 31%;
-    float: right;
-    margin-left: 0px;
 }
 
 #notesText {

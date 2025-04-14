@@ -49,7 +49,7 @@ namespace PowerPoint_Remote
                     if (Presentation == null) return;
                     try
                     {
-                        T(Presentation.SlideShowWindow).Activate();
+                        // T(Presentation.SlideShowWindow).Activate();
                         T(T(Presentation.SlideShowWindow).View).Next();
                     }
                     catch (COMException) { }
@@ -59,7 +59,7 @@ namespace PowerPoint_Remote
                     if (Presentation == null) return;
                     try
                     {
-                        T(Presentation.SlideShowWindow).Activate();
+                        // T(Presentation.SlideShowWindow).Activate();
                         T(T(Presentation.SlideShowWindow).View).Previous();
                     }
                     catch (COMException) { }
@@ -77,7 +77,7 @@ namespace PowerPoint_Remote
                     if (Presentation == null) return;
                     try
                     {
-                        T(Presentation.SlideShowWindow).Activate();
+                        // T(Presentation.SlideShowWindow).Activate();
                         T(T(Presentation.SlideShowWindow).View).GotoSlide(path[12..]);
                     }
                     catch (COMException) { }

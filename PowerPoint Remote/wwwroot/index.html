@@ -38,10 +38,10 @@
         }
 
 		document.addEventListener('swiped-left', function (e) {
-			nextPage();
+            nextSlideAll();
 		})
 		document.addEventListener('swiped-right', function (e) {
-			previousPage();
+            previousSlideAll();
 		})
 
 	</script>
@@ -55,30 +55,33 @@
 			<button onclick="nextSlideAll();">All -&gt;</button>
 		</div>
 		<div id="central">
-			<img id="picture" src="powerpoint_parts/1.jpg" alt="" />
-			<img id="picture2" src="powerpoint_parts/2.jpg" alt="" />
-			<div id="timerBlock">
-				<div> Slide Timer: </div>
-				<div id="slideTimerCountdown">1:00</div>
-			</div>
-			<div id="notesText">
-O God,
-	whose glory it is always to have mercy,
-be gracious to all who have gone astray from Your ways
-	and bring them again with repentant hearts and steadfast faith
-		to embrace and hold fast the unchangeable truth of Your Word;
-through Jesus Christ, Your Son, our Lord,
-who lives and reigns with You and the Holy Spirit,
-	one God, now and forever. 
-			</div>
+			<div id="rightColumn">
+				<img id="picture2" src="powerpoint_parts/2.jpg" alt="" onclick="nextSlideAll();" />
+				<div id="timerBlock">
+					<div> Slide Timer: </div>
+					<div id="slideTimerCountdown">1:00</div>
 				</div>
+			</div>
+			<img id="picture" src="powerpoint_parts/1.jpg" alt="" onclick="nextSlideAll();" />
+			<div id="notesText">
+				O God,
+				whose glory it is always to have mercy,
+				be gracious to all who have gone astray from Your ways
+				and bring them again with repentant hearts and steadfast faith
+				to embrace and hold fast the unchangeable truth of Your Word;
+				through Jesus Christ, Your Son, our Lord,
+				who lives and reigns with You and the Holy Spirit,
+				one God, now and forever.
+			</div>
+			&nbsp;
+		</div>
 
 
 		<div id="bottomLinks">
 			<button id="toggle-theme-btn">Toggle Theme</button>
 			<button onclick="slide13Button();">Slide 13</button>
-			<button id="toggle-slides-btn">Slides</button>
-			<a href="legacy.html">legacy</a>
+			<button id="toggle-slides-btn" onclick="toggleSlideGallery();">Select Slide</button>
+			<button onclick="document.location='legacy.html'">legacy</button>
 			<form action="" id="slideForm">
 				Slide <input id="inputBoxforSlide" type="text" name="slideSelect" placeholder="1">
 				<button type="submit">Go</button>
@@ -87,207 +90,267 @@ who lives and reigns with You and the Holy Spirit,
 		</div>
 
 		<div id="slideGallery">
-			<img onclick="jumpToSlide(1)" src="powerpoint_parts/1.jpg" alt="" />
+			<button onclick="JumpToSlide(1)"><img src="powerpoint_parts/1.jpg" alt="" /></button>
 		</div>
 
-	</div>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script>
-
-        // vars
-        let imageNumber = 1;
-		let slideTimer = 0;
-		let noSlideTimer = false;
-
-		// replace text
-
-        function startTimerForSlides(slideTimer) {
-            // Get today's date and time
-            var now = new Date().getTime();
-
-            // Set the date we're counting down to
-            var countDownDate = now + slideTimer;
-
-            var countDownTimer = setInterval(function () {
-
-                now = new Date().getTime();
-
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                if (seconds < 10) {
-                    var remainingSeconds = "0" + seconds;
-                }
-                else {
-                    var remainingSeconds = seconds;
-                }
-
-                // Output the result in an element with id="demo"
-                document.getElementById("slideTimerCountdown").innerHTML = minutes + ":" + remainingSeconds;
-
-                // If the count down is over, write some text 
-                if (distance < 0) {
-                    clearInterval(countDownTimer);
-                    document.getElementById("slideTimerCountdown").innerHTML = "0:00";
-                }
-            }, 1000);
 
 
-        }
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script>
+
+			// vars
+			let imageNumber = 1;
+			let slideTimer = 0;
+			let noSlideTimer = false;
 
 
-        function loadMessage() {
+			//build slide gallery
+			getText("powerpoint_parts/0.txt");
 
-            var srclink = "powerpoint_parts/" + imageNumber + ".txt";
+			async function getText(file) {
+				let x = await fetch(file);
+				let y = await x.text();
+				y = Number(y);
 
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', srclink, true);
-
-            xhr.onload = function () {
-
-                var text = this.responseText;
-
-                var firstLine = text.split('\n').shift();
-
-				slideTimer = firstLine * 1000;
-
-                if (typeof (myInterval) !== 'undefined') {
-                    clearTimeout(myInterval);
-                    myInterval = null;
-                }
-
-                if (slideTimer > 0 && noSlideTimer === false) {
-                    startTimerForSlides(slideTimer);
-					const myInterval = setTimeout(nextSlideTimer, slideTimer);
-                }
-
-                document.getElementById('notesText').innerHTML = text;
-            };
-
-            xhr.send();
-
-		}
-
-		function callSlideParts() {
-
-			/*
-			if (typeof(myInterval) !== 'undefined') {
-				alert(39);
-                myInterval = undefined;
-            }
-			*/
-
-            myInterval = null;
-
-			var srclink = "powerpoint_parts/" + imageNumber + ".jpg";
-            // Change src attribute of image
-            $("#picture").attr("src", srclink);
-
-            var imageNumber2 = imageNumber + 1;
-			srclink = "powerpoint_parts/" + imageNumber2 + ".jpg";
-            $("#picture2").attr("src", srclink);
-
-            loadMessage();
-
-            const element = document.getElementById("inputBoxforSlide")
-            element.setAttribute("placeholder", imageNumber)
-		}
-
-        function nextSlideTimer() {
-            imageNumber++;
-            noSlideTimer = false;
-            callSlideParts();
-        }
-
-		function nextSlideImg() {
-			imageNumber++;
-			noSlideTimer = true;
-			callSlideParts();
-		}
-
-		function previousSlideImg() {
-			imageNumber--;
-            noSlideTimer = true;
-			callSlideParts();
-		}
-
-		function nextSlideAll() {
-            nextPage();
-			imageNumber++;
-			noSlideTimer = false;
-            callSlideParts();
-        }
-
-		function previousSlideAll() {
-            previousPage();
-			imageNumber--;
-            noSlideTimer = true;
-			callSlideParts();
-			
-		}
-
-		function slide13Button() {
-			slideNumber(13);
-			imageNumber = 13;
-            noSlideTimer = false;
-            callSlideParts();
-		}
-        
-
-        // change images for next slide
-
-        $(document).ready(function () {
-            $("img").click(function () {
-                nextSlideAll() 
-            });
-		});
-
-		loadMessage();
-
-        $(document).ready(function () {
-            $("#toggle-theme-btn").click(function () {
-                $("#mainTheme, #notesTheme").each(function () {
-                    this.disabled = !this.disabled;
-                });
-            });
-		});
-
-
-
-
-
-        //slideForm
-        const form = document.getElementById("slideForm");
-
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent default submission
-
-            // Perform validation or other actions here
-            // Example validation
-            const slideNum = form.querySelector('input[name="slideSelect"]');
-            if (slideNum.value.trim() === '') {
-                alert('Slide Number is required.');
-                return; // Stop submission if validation fails
-            }
-
-			// If validation passes or no validation needed, submit the form
-			imageNumber = Number(slideNum.value);
-            slideNumber(imageNumber);
-			callSlideParts();
-			form.reset();
-        });
+				let slideGalleryText = '';
+				for (let i = 1; i <= y; i++) { // Assuming you have 126 slides
+					slideGalleryText += `<button onclick="JumpToSlide(${i})"><img src="powerpoint_parts/${i}.jpg" alt="" /></button>`;
+				}
+				// Insert the slide gallery buttons into the slideGallery div
+				document.getElementById('slideGallery').innerHTML = slideGalleryText;
+			}
 
 
 
 
 
 
-	</script>
+			function toggleSlideGallery() {
+				let divX = document.getElementById("slideGallery");
+				if (divX.style.display === "none") {
+					divX.style.display = "grid";
+				} else {
+					divX.style.display = "none";
+				}
+			}
+
+			toggleSlideGallery();
+
+			// replace text
+
+			function startTimerForSlides(slideTimer) {
+				// Get today's date and time
+				var now = new Date().getTime();
+
+				// Set the date we're counting down to
+				var countDownDate = now + slideTimer;
+
+				var timerSlideNumberSecond = imageNumber;
+
+				var countDownTimer = setInterval(function () {
+
+					now = new Date().getTime();
+
+					// Find the distance between now and the count down date
+					var distance = countDownDate - now;
+
+					// Time calculations for days, hours, minutes and seconds
+					var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+					if (seconds < 10) {
+						var remainingSeconds = "0" + seconds;
+					}
+					else {
+						var remainingSeconds = seconds;
+					}
+
+					// Output the result in an element with id="demo"
+					document.getElementById("slideTimerCountdown").innerHTML = minutes + ":" + remainingSeconds + " / " + slideTimer / 1000;
+
+					// If the count down is over, write some text
+					if (distance < 0) {
+						document.getElementById("slideTimerCountdown").innerHTML = "0:00" + " / " + slideTimer / 1000;
+						clearInterval(countDownTimer);
+					}
+
+					if (timerSlideNumberSecond !== imageNumber) {
+						document.getElementById("slideTimerCountdown").innerHTML = "0:00" + " / 0";
+						clearInterval(countDownTimer);
+					}
+
+				}, 1000);
+
+
+			}
+
+			let timerSlideNumberFirst = 1;
+
+			function timerNextSlide(timerSlideNumber) {
+				if (imageNumber === timerSlideNumber) {
+					nextSlideTimer();
+				}
+			}
+
+
+			function loadMessage() {
+
+				var srclink = "powerpoint_parts/" + imageNumber + ".txt";
+
+				let xhr = new XMLHttpRequest();
+				xhr.open('GET', srclink, true);
+
+				xhr.onload = function () {
+
+					var text = this.responseText;
+
+					var firstLine = text.split('\n').shift();
+
+					slideTimer = firstLine * 1000;
+
+					if (typeof (myInterval) !== 'undefined') {
+						// clearTimeout(myInterval);
+						// clearInterval(countDownTimer);
+						myInterval = null;
+					}
+
+					if (slideTimer > 0 && noSlideTimer === false) {
+						timerSlideNumberFirst = imageNumber;
+						startTimerForSlides(slideTimer);
+						const myInterval = setTimeout(function () {
+							timerNextSlide(timerSlideNumberFirst);
+						}, slideTimer);
+					}
+					else {
+						// No timer
+						// does not seem to work on slide advance
+						document.getElementById("slideTimerCountdown").innerHTML = "0:00" + " / 0";
+					}
+
+					// break the textblock into an array of lines
+					var lines = text.split('\n');
+					// remove one line, starting at the first position
+					lines.splice(0, 1);
+					// join the array back into a single string
+					text = lines.join('\n');
+
+					document.getElementById('notesText').innerHTML = text;
+				};
+
+				xhr.send();
+
+			}
+
+			function callSlideParts() {
+
+				/*
+				if (typeof(myInterval) !== 'undefined') {
+					alert(39);
+					myInterval = undefined;
+				}
+				*/
+
+				myInterval = null;
+
+				var srclink = "powerpoint_parts/" + imageNumber + ".jpg";
+				// Change src attribute of image
+				$("#picture").attr("src", srclink);
+
+				var imageNumber2 = imageNumber + 1;
+				srclink = "powerpoint_parts/" + imageNumber2 + ".jpg";
+				$("#picture2").attr("src", srclink);
+
+				loadMessage();
+
+				const element = document.getElementById("inputBoxforSlide")
+				element.setAttribute("placeholder", imageNumber)
+			}
+
+			function nextSlideTimer() {
+				imageNumber++;
+				noSlideTimer = false;
+				callSlideParts();
+			}
+
+			function nextSlideImg() {
+				imageNumber++;
+				noSlideTimer = true;
+				callSlideParts();
+			}
+
+			function previousSlideImg() {
+				imageNumber--;
+				noSlideTimer = true;
+				callSlideParts();
+			}
+
+			function nextSlideAll() {
+				nextPage();
+				imageNumber++;
+				noSlideTimer = false;
+				callSlideParts();
+			}
+
+			function previousSlideAll() {
+				previousPage();
+				imageNumber--;
+				noSlideTimer = true;
+				callSlideParts();
+
+			}
+
+			function slide13Button() {
+				slideNumber(13);
+				imageNumber = 13;
+				noSlideTimer = false;
+				callSlideParts();
+			}
+
+			function JumpToSlide(imageNumber2) {
+				slideNumber(imageNumber2);
+				imageNumber = imageNumber2;
+				noSlideTimer = false;
+				callSlideParts();
+				toggleSlideGallery()
+			}
+
+			loadMessage();
+
+			$(document).ready(function () {
+				$("#toggle-theme-btn").click(function () {
+					$("#mainTheme, #notesTheme").each(function () {
+						this.disabled = !this.disabled;
+					});
+				});
+			});
+
+
+
+
+
+			//slideForm
+			const form = document.getElementById("slideForm");
+
+			form.addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent default submission
+
+				// Perform validation or other actions here
+				// Example validation
+				const slideNum = form.querySelector('input[name="slideSelect"]');
+				if (slideNum.value.trim() === '') {
+					alert('Slide Number is required.');
+					return; // Stop submission if validation fails
+				}
+
+				// If validation passes or no validation needed, submit the form
+				imageNumber = Number(slideNum.value);
+				slideNumber(imageNumber);
+				callSlideParts();
+				form.reset();
+			});
+
+
+		</script>
 
 </body>
 </html>		
