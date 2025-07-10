@@ -4,7 +4,7 @@
 
 Orignianal project: https://github.com/JensKrumsieck/PowerPoint-Remote
 
-[https://github.com/FirstPet31415/PowerPoint-Remote-by-Sylvan-Finger/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png ](https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png)
+https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png 
 
 This is a program to give you a picture of what is similar to what PowerPoint presentation view on you computer, but presents a copy of it on your mobile device. 
 
