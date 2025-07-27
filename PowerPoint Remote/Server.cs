@@ -31,7 +31,7 @@ namespace PowerPoint_Remote
             app.Visible = true;
             dynamic presentations = T(app.Presentations);
             Presentation = T(presentations.Open(url));
-            T(Presentation.SlideShowSettings).Run();
+            // T(Presentation.SlideShowSettings).Run();
         }
 
         private void ConfigureServer(IApplicationBuilder app)
