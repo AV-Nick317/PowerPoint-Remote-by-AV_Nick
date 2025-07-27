@@ -83,7 +83,7 @@
 			<button id="toggle-slides-btn" onclick="toggleSlideGallery();">Select Slide</button>
 			<button onclick="document.location='legacy.html'">legacy</button>
 			<form action="" id="slideForm">
-				Slide <input id="inputBoxforSlide" type="text" name="slideSelect" placeholder="1">
+				Slide <input id="inputBoxforSlide" type="text"   pattern="\d*" name="slideSelect" placeholder="1">
 				<button type="submit">Go</button>
 			</form>
 
@@ -91,6 +91,7 @@
 
 		<div id="slideGallery">
 			<button onclick="JumpToSlide(1)"><img src="powerpoint_parts/1.jpg" alt="" /></button>
+			<button onclick="JumpToSlide(2)"><img src="powerpoint_parts/2.jpg" alt="" /></button>
 		</div>
 
 
@@ -100,21 +101,25 @@
 
 			// vars
 			let imageNumber = 1;
+            let firstNumber = null, secondNumber = null;
 			let slideTimer = 0;
 			let noSlideTimer = false;
+			let z = "date";
 
 
 			//build slide gallery
 			getText("powerpoint_parts/0.txt");
 
 			async function getText(file) {
-				let x = await fetch(file);
-				let y = await x.text();
-				y = Number(y);
+				let x1 = await fetch(file);
+				let x2 = await x1.text();
+				var lines2 = x2.split('\n');
+				let y = Number(lines2[0]);
+				z = lines2[1];
 
 				let slideGalleryText = '';
-				for (let i = 1; i <= y; i++) { // Assuming you have 126 slides
-					slideGalleryText += `<button onclick="JumpToSlide(${i})"><img src="powerpoint_parts/${i}.jpg" alt="" /></button>`;
+				for (let i = 1; i <= y; i++) {
+					slideGalleryText += `<button onclick="JumpToSlide(${i})"><img src="powerpoint_parts/${z}${i}.jpg" alt="" /></button>`;
 				}
 				// Insert the slide gallery buttons into the slideGallery div
 				document.getElementById('slideGallery').innerHTML = slideGalleryText;
@@ -135,6 +140,32 @@
 			}
 
 			toggleSlideGallery();
+
+
+
+
+            $(document).ready(function () {
+                $("#toggle-theme-btn").click(function () {
+                    $("#mainTheme, #notesTheme").each(function () {
+                        this.disabled = !this.disabled;
+                    });
+                });
+            });
+
+
+            function toggleStylesheets() {
+                const style1 = document.getElementById("mainTheme");
+                const style2 = document.getElementById("notesTheme");
+
+                if (style1.disabled) {
+                    style1.disabled = false;
+                    style2.disabled = true;
+                } else {
+                    style1.disabled = true;
+                    style2.disabled = false;
+                }
+            }
+
 
 			// replace text
 
@@ -195,7 +226,7 @@
 
 			function loadMessage() {
 
-				var srclink = "powerpoint_parts/" + imageNumber + ".txt";
+				var srclink = "powerpoint_parts/" + z + imageNumber + ".txt";
 
 				let xhr = new XMLHttpRequest();
 				xhr.open('GET', srclink, true);
@@ -234,6 +265,26 @@
 					// join the array back into a single string
 					text = lines.join('\n');
 
+					text.startsWith("toggleRemoteTheme");
+                    if (text.startsWith("toggleRemoteTheme")) {
+
+                        // Extract content inside the first parentheses
+						const match = text.match(/\(([^)]+)\)/);
+
+						if (match) {
+							const numbers = match[1].match(/\d+/g);
+                            firstNumber = imageNumber + Number(numbers[0]);
+							if (Number(numbers[1])) {
+                                secondNumber = firstNumber + Number(numbers[1]);
+							}
+							
+						}
+						else {
+                            toggleStylesheets();
+                        }
+
+					}
+
 					document.getElementById('notesText').innerHTML = text;
 				};
 
@@ -252,15 +303,25 @@
 
 				myInterval = null;
 
-				var srclink = "powerpoint_parts/" + imageNumber + ".jpg";
+				var srclink = "powerpoint_parts/" + z + imageNumber + ".jpg";
 				// Change src attribute of image
 				$("#picture").attr("src", srclink);
 
 				var imageNumber2 = imageNumber + 1;
-				srclink = "powerpoint_parts/" + imageNumber2 + ".jpg";
+				srclink = "powerpoint_parts/" + z + imageNumber2 + ".jpg";
 				$("#picture2").attr("src", srclink);
 
 				loadMessage();
+
+                if (firstNumber === imageNumber) {
+					toggleStylesheets();
+					firstNumber = null;
+                }
+
+                if (secondNumber === imageNumber) {
+					toggleStylesheets();
+                    secondNumber = null;
+                }
 
 				const element = document.getElementById("inputBoxforSlide")
 				element.setAttribute("placeholder", imageNumber)
@@ -314,19 +375,6 @@
 				toggleSlideGallery()
 			}
 
-			loadMessage();
-
-			$(document).ready(function () {
-				$("#toggle-theme-btn").click(function () {
-					$("#mainTheme, #notesTheme").each(function () {
-						this.disabled = !this.disabled;
-					});
-				});
-			});
-
-
-
-
 
 			//slideForm
 			const form = document.getElementById("slideForm");
@@ -349,6 +397,12 @@
 				form.reset();
 			});
 
+			// loadMessage doesn't seem to work on page load
+			loadMessage();
+            setTimeout(function () {
+                imageNumber = 0;
+                nextSlideImg();
+            }, 1000);
 
 		</script>
 

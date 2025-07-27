@@ -16,13 +16,14 @@ namespace PowerPoint_Remote
         {
             InitializeComponent();
             server = new Server();
+            IpDisplayText.Text = $"Device IP: http://{server.IpAddress}:{Server.Port}";
             Closing += (s, e) => server.Dispose();
         }
 
         private void BuildQrCode()
         {
             var stream = new MemoryStream();
-            var qrcode = new QrCode(server.IpAddress + ":" + Server.Port, new Vector2Slim(512, 512), SkiaSharp.SKEncodedImageFormat.Png);
+            var qrcode = new QrCode("http://" + server.IpAddress + ":" + Server.Port, new Vector2Slim(512, 512), SkiaSharp.SKEncodedImageFormat.Png);
             qrcode.GenerateImage(stream);
             QrImg.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
