@@ -6,15 +6,13 @@ Original project: https://github.com/JensKrumsieck/PowerPoint-Remote
 
 https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png 
 
-This is a program to give you a picture of what is similar to what PowerPoint presentation view on you computer, but presents a copy of it on your mobile device. 
-
-User notes: I have not found the original QR code to always work. Please find your PC's IP address and add the port ":3000" afterwards, as shown in the image above so that you can get the mobile device browser connected to the right address. 
+This is a program to give you a picture copy of your PowerPoint presentation on your remote device. 
 
 Manually export your PowerPoint presentation using the included macro for PowerPoint with the path link updated to wherever you have installed your PowerPoint Remote app. 
 
 Please contact me for any help needed for getting started. 
 
-This is supposed to run like the program Clicker, but doesn't use up your PC's system resources while running. 
+This is supposed to run like the program Clicker, but doesn't use up much of any of your devices' system resources while running. 
 
 
 
