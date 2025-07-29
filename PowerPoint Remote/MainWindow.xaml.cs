@@ -1,14 +1,15 @@
 ﻿using Microsoft.Win32;
 using SkiaSharp.QrCode.Image;
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using ThemeCommons.Controls;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Linq;
 
 namespace PowerPoint_Remote
 {
@@ -49,7 +50,9 @@ namespace PowerPoint_Remote
             Closing += (s, e) => server.Dispose();
 
             // Load default s.ppts file if it exists
-            string presetPath = @"C:\Users\first\Desktop\s.pptx";
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string presetPath = Path.Combine(desktopPath, "s.pptx");
+
             if (File.Exists(presetPath))
             {
                 PPTPath.Text = presetPath;

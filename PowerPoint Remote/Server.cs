@@ -8,8 +8,18 @@ using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using Zack.ComObjectHelpers;
 
+using System.Net.WebSockets;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Websocket.Client;
+
+
+
 namespace PowerPoint_Remote
 {
+
     public class Server : IDisposable
     {
         public string IpAddress = "";
@@ -51,6 +61,7 @@ namespace PowerPoint_Remote
                     {
                         // T(Presentation.SlideShowWindow).Activate();
                         T(T(Presentation.SlideShowWindow).View).Next();
+                        // Debug.WriteLine("OBS connection started...");
                     }
                     catch (COMException) { }
                 }
@@ -77,11 +88,13 @@ namespace PowerPoint_Remote
                     if (Presentation == null) return;
                     try
                     {
-                        // T(Presentation.SlideShowWindow).Activate();
+                        //T(Presentation.SlideShowWindow).Activate();
                         T(T(Presentation.SlideShowWindow).View).GotoSlide(path[12..]);
                     }
                     catch (COMException) { }
                 }
+
+
             });
         }
 
