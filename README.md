@@ -1,10 +1,21 @@
 <img src="https://raw.githubusercontent.com/JensKrumsieck/PowerPoint-Remote/master/PowerPoint%20Remote/Resources/PPTRemote.png" alt="PPTRemote" width="250px"/>
 
-# PowerPoint-Remote (a remix of a previous app)
+# PowerPoint-Remote
+Use your mobile device connected to your router (with or without internet) and run your PowerPoint with picture copies of the slideshow on your mobile device. No need to use up system resources by having a live remote picture of your PowerPoint presentation. I use it to lead worship.
 
 Original project: https://github.com/JensKrumsieck/PowerPoint-Remote
 
+Views of the remote on your mobile device:
 <img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png" alt="RemoteWindow" />
+
+Examples of what this can do in YouTube video:
+https://youtu.be/b0eDuyEK6JM
+
+
+
+<img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/AV_Nick-video1%20-%20frame%20at%200m0s.jpg" alt="RemoteWindow" />
+<img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/AV_Nick-video1%20-%20frame%20at%200m15s.jpg" alt="RemoteWindow" />
+<img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/AV_Nick-video1%20-%20frame%20at%200m21s.jpg" alt="RemoteWindow" />
 
 This is a program to give you a picture copy of your PowerPoint presentation on your remote device. 
 
