@@ -4,7 +4,7 @@
 
 Original project: https://github.com/JensKrumsieck/PowerPoint-Remote
 
-https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png 
+<img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png" alt="RemoteWindow" />
 
 This is a program to give you a picture copy of your PowerPoint presentation on your remote device. 
 
