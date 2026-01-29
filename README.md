@@ -22,7 +22,9 @@
   <h2>Screenshots</h2>
 
   <h3>Remote Interface</h3>
-  <img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png" alt="RemoteWindow" />
+  <img src=".github/IMG_0012.PNG" alt="RemoteWindow1" />
+  <img src=".github/IMG_0013.PNG" alt="RemoteWindow2" />
+  <img src=".github/IMG_0014.PNG" alt="RemoteWindow3" />
 
   <h3>Example Frames from Demo Video</h3>
   <img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/AV_Nick-video1%20-%20frame%20at%200m0s.jpg" alt="Frame 1" />
