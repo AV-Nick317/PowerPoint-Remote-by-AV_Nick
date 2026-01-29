@@ -92,10 +92,7 @@
       https://github.com/PuZhiweizuishuai/PPT-Remote-control
     </a>
   </p>
-
-  <h3>Original Project Screenshot</h3>
-  <p><em>[Original PPTRemote screenshot could be shown here]</em></p>
-
+  
   <hr />
 
   <h2>Notes</h2>
@@ -105,5 +102,10 @@
     It’s ideal for worship services, classrooms, small events, or any situation where reliability matters
     more than fancy animations.
   </p>
+
+  <p>
+    Download branch 3004 at the moment, as it is older and more stable.
+  </p>
+
 
 
