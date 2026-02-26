@@ -103,9 +103,5 @@
     more than fancy animations.
   </p>
 
-  <p>
-    Download branch 3004 at the moment, as it is older and more stable.
-  </p>
-
 
 
