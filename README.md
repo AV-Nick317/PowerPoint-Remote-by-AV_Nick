@@ -22,7 +22,9 @@
   <h2>Screenshots</h2>
 
   <h3>Remote Interface</h3>
-  <img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/PowerPoint%20Remote%20Control.jpeg.png" alt="RemoteWindow" />
+  <img src=".github/IMG_0012.PNG" alt="RemoteWindow1" />
+  <img src=".github/IMG_0013.PNG" alt="RemoteWindow2" />
+  <img src=".github/IMG_0014.PNG" alt="RemoteWindow3" />
 
   <h3>Example Frames from Demo Video</h3>
   <img src="https://github.com/AV-Nick317/PowerPoint-Remote-by-AV_Nick/blob/master/.github/AV_Nick-video1%20-%20frame%20at%200m0s.jpg" alt="Frame 1" />
@@ -90,10 +92,7 @@
       https://github.com/PuZhiweizuishuai/PPT-Remote-control
     </a>
   </p>
-
-  <h3>Original Project Screenshot</h3>
-  <p><em>[Original PPTRemote screenshot could be shown here]</em></p>
-
+  
   <hr />
 
   <h2>Notes</h2>
@@ -103,5 +102,10 @@
     It’s ideal for worship services, classrooms, small events, or any situation where reliability matters
     more than fancy animations.
   </p>
+
+  <p>
+    Download branch 3004 at the moment, as it is older and more stable.
+  </p>
+
 
 
